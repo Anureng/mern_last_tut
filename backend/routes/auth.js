@@ -33,7 +33,7 @@ router.post('/register',async(req,res)=>{
     if(userexist){
         return res.status(422).json({message:"email already existed"})
     }
-    const user=new User({name,email,phone,password,cpassword});
+    const user=new User({name,email,work,phone,password,cpassword});
     const userRegister=await user.save();
     if(userRegister){
         res.status(201).json({message:"user register successfully"});
