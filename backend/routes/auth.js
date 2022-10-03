@@ -1,4 +1,7 @@
 const express=require('express');
+const bcrypt=require('bcrypt');
+const jwt=require('jsonwebtoken');
+const user = require('../model/useSchema');
 const router=express();
 
 // const {setgoal,updategoal,deletegoal,getgoal}=require('../controller/goalsController');
@@ -32,16 +35,61 @@ router.post('/register',async(req,res)=>{
     const userexist=await User.findOne({email:email});
     if(userexist){
         return res.status(422).json({message:"email already existed"})
+    } else if (password!= password){
+      return res.status(422).json({message:"password are not match"})
     }
-    const user=new User({name,email,work,phone,password,cpassword});
-    const userRegister=await user.save();
-    if(userRegister){
-        res.status(201).json({message:"user register successfully"});
+    else{
+      const user=new User({name,email,work,phone,password,cpassword});
+      await user.save();
+      
+          res.status(201).json({message:"user register successfully"});
     }
+  
+  
     
   } catch(err){
     console.log(err);
   }
     // res.json({message:req.body});
+  
 });
+  //sign up page
+  router.post('/signin',async (req,res)=>{
+    try{
+    const {email,password}=req.body;
+    if(!email || !password){
+      return res.status(400).json({message:"plz filled the data"})
+    }
+    const userlogin=await user.findOne({email:email});
+    // console.log(userlogin);
+    // const ismatch=await bcrypt.compare(password,userlogin.password);
+
+    // if(!userlogin){
+    //   res.status(400).json({message:"server error"})
+    // }
+    // else{
+    //   res.status(200).json({message:"user sign successfully"})
+    // }
+    if(userlogin){
+      const ismatch=await bcrypt.compare(password,userlogin.password);
+      const token=await userlogin.generateAuthToken();
+      res.cookie('jwttoken',token,{
+        expires:new Date(Date.now()+25892000000),
+        httpOnly:true
+      })
+    if(!ismatch){
+      res.status(400).json({message:"invalid credentails pass"})
+    }
+    else{
+      res.status(200).json({message:"user signin succesfully"})
+    }
+  }
+  else{
+    res.status(400).json({message:"invalid credentails"})
+  }
+    } catch(err){
+        console.log(err);
+    }
+  });
+
 module.exports=router;
