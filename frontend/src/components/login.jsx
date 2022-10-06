@@ -20,7 +20,7 @@ function Login() {
 <Heading>Contact us</Heading>
 <Input placeholder='enter email' borderColor={"black"} _placeholder={{ color: 'black' }}></Input>
 <InputGroup>
-<Input placeholder='enter password' type={show?'email':"password"} borderColor={"black"} _placeholder={{ color: 'black' }}></Input>
+<Input placeholder='entercd fronte password' type={show?'email':"password"} borderColor={"black"} _placeholder={{ color: 'black' }}></Input>
 <InputRightElement>
 <Button onClick={handleclick} p={2}  borderColor={"black"} backgroundColor={'black'} color="white" _hover={{bgcolor:'black'}}>
   {show?'hide':'show'}
