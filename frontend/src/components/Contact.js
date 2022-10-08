@@ -1,6 +1,7 @@
 import { Box,Text,VStack,Icon, Flex,Wrap, WrapItem, Center,Input,Heading, Textarea, InputGroup, InputLeftAddon, Button } from '@chakra-ui/react'
 import React from 'react'
 import { FaPhone,FaAddressBook ,FaEnvelope} from 'react-icons/fa';
+import Navbar from './Navbar';
 
 
 function Contact() {
@@ -32,6 +33,7 @@ function Contact() {
     </Flex>
    </VStack>
    </Box> */}
+   <Navbar/>
    <VStack p="5rem"  bgGradient='linear(to-r, green.200, pink.500)' > 
    <Wrap spacing={"3rem"}>
     <WrapItem border={"2px solid black"} p="2" display={"flex"} h="14" justifyContent={"center"} alignItems="center" gap={"1rem"}>
