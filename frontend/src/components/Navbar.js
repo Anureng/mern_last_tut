@@ -1,6 +1,6 @@
 import React from 'react'
-import { Box, Text,Heading, HStack, Flex, Spacer,Link } from '@chakra-ui/react'
-import {NavLink} from "react-router-dom"
+import { Text, Flex, Spacer, } from '@chakra-ui/react'
+import { NavLink } from "react-router-dom"
 
 
 function Navbar() {
@@ -9,31 +9,31 @@ function Navbar() {
       <Text fontSize={"2xl"}>Anurag</Text>
       <Spacer></Spacer>
       <Text fontSize={"2xl"}>
-      <li>
-        <NavLink to="/">Home</NavLink>
-      </li>
+        <li>
+          <NavLink to="/">Home</NavLink>
+        </li>
       </Text>
-      
+
       <Text fontSize={"2xl"}> <li>
         <NavLink to="/about">About</NavLink>
       </li>
       </Text>
       <Text fontSize={"2xl"} >
-      <li>
-        <NavLink to="/contact">Contact</NavLink>
-      </li>
+        <li>
+          <NavLink to="/contact">Contact</NavLink>
+        </li>
       </Text>
       <Text fontSize={"2xl"}>
-      <li>
-        <NavLink to="/login">
-        Login
-        </NavLink>
-      </li>
+        <li>
+          <NavLink to="/login">
+            Login
+          </NavLink>
+        </li>
       </Text>
       <Text fontSize={"2xl"} mr="1rem">
-      <li>
-        <NavLink to="/registration">Registration</NavLink>
-      </li>
+        <li>
+          <NavLink to="/registration">Registration</NavLink>
+        </li>
       </Text>
     </Flex>
   )

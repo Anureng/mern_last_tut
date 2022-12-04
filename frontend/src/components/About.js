@@ -5,7 +5,7 @@ function About() {
   const navigate = useNavigate();
   const callAboutpage = async () => {
     try {
-      const res = await fetch('/about', {
+      const res = await fetch('httpp://localhost/5000', {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -30,7 +30,7 @@ function About() {
   }
   useEffect(() => {
     callAboutpage();
-  }, [])
+  })
 
   return (
     <>

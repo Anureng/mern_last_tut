@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken")
 const user = require("../model/useSchema");
 const Authenticate = async (req, res, next) => {
    try {
-      const token = req.cookies.jwtoken;
+      const token = req.cookie.jwtoken;
       const verifyToken = jwt.verify(token, process.env.SECRET_KEY);
 
       const rootuser = await user.findOne({ _id: verifyToken._id, "tokens.token": token });
@@ -16,7 +16,7 @@ const Authenticate = async (req, res, next) => {
       next();
 
    } catch (err) {
-      console.log(err);
+      console.log(err)
    }
 }
 module.exports = Authenticate
